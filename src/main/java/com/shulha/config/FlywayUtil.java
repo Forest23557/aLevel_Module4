@@ -14,7 +14,7 @@ public class FlywayUtil {
         flyway = Optional.ofNullable(flyway)
                 .orElseGet(() ->
                         Flyway.configure()
-                                .dataSource("jdbc:postgresql://localhost:5432/Hibernate",
+                                .dataSource("jdbc:postgresql://localhost:5432/DetailFactory",
                                         "postgres", "201995")
                                 .baselineOnMigrate(true)
                                 .schemas("public")
