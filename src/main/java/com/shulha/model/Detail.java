@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
 @Table(name = "details")
-public class Detail {
+public class Detail implements Cloneable {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "UUID")
@@ -22,13 +22,13 @@ public class Detail {
     @Column(name = "ending_time")
     private LocalDateTime endingTime;
     @Column(name = "spent_time")
-    private int spentTime;
+    private long spentTime;
     @Column(name = "spent_fuel")
-    private int spentFuel;
+    private long spentFuel;
     @Column(name = "mined_fuel")
-    private int minedFuel;
+    private long minedFuel;
     @Column(name = "broken_chips")
-    private int amountOfBrokenChips;
+    private long amountOfBrokenChips;
 
     public Detail() {
     }
@@ -57,35 +57,35 @@ public class Detail {
         this.endingTime = endingTime;
     }
 
-    public int getSpentTime() {
+    public long getSpentTime() {
         return spentTime;
     }
 
-    public void setSpentTime(final int spentTime) {
+    public void setSpentTime(final long spentTime) {
         this.spentTime = spentTime;
     }
 
-    public int getSpentFuel() {
+    public long getSpentFuel() {
         return spentFuel;
     }
 
-    public void setSpentFuel(final int spentFuel) {
+    public void setSpentFuel(final long spentFuel) {
         this.spentFuel = spentFuel;
     }
 
-    public int getMinedFuel() {
+    public long getMinedFuel() {
         return minedFuel;
     }
 
-    public void setMinedFuel(final int minedFuel) {
+    public void setMinedFuel(final long minedFuel) {
         this.minedFuel = minedFuel;
     }
 
-    public int getAmountOfBrokenChips() {
+    public long getAmountOfBrokenChips() {
         return amountOfBrokenChips;
     }
 
-    public void setAmountOfBrokenChips(final int amountOfBrokenChips) {
+    public void setAmountOfBrokenChips(final long amountOfBrokenChips) {
         this.amountOfBrokenChips = amountOfBrokenChips;
     }
 
@@ -113,5 +113,10 @@ public class Detail {
                 ", minedFuel=" + minedFuel +
                 ", amountOfBrokenChips=" + amountOfBrokenChips +
                 '}';
+    }
+
+    @Override
+    public Detail clone() throws CloneNotSupportedException {
+        return (Detail) super.clone();
     }
 }

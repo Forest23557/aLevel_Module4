@@ -1,15 +1,17 @@
 package com.shulha.repository;
 
+import com.shulha.builder.DetailBuilder;
 import com.shulha.config.FlywayUtil;
 import com.shulha.config.HibernateFactoryUtil;
 import com.shulha.model.Detail;
 import lombok.SneakyThrows;
 
 import javax.persistence.EntityManager;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class DetailHibernateRepository implements Repository<String, Detail> {
     private static final EntityManager ENTITY_MANAGER = HibernateFactoryUtil.getEntityManager();
@@ -47,37 +49,31 @@ public class DetailHibernateRepository implements Repository<String, Detail> {
 
     @Override
     public List<Detail> getAll() {
-        return null;
+        return ENTITY_MANAGER.createQuery("select d from Detail d", Detail.class)
+                .getResultList();
     }
 
     @Override
-    public Detail getById(final String id) {
-        return null;
+    public Optional<Detail> getById(final String id) {
+        final Detail detail = ENTITY_MANAGER.find(Detail.class, id);
+
+        return Optional.ofNullable(detail);
     }
 
     @Override
     public void delete(final String id) {
-
+        getById(id).ifPresent(detail -> {
+            ENTITY_MANAGER.getTransaction().begin();
+            ENTITY_MANAGER.remove(detail);
+            ENTITY_MANAGER.getTransaction().commit();
+        });
     }
 
     @Override
     public void removeAll() {
-
-    }
-
-    @SneakyThrows
-    public static void main(String[] args) {
-        final DetailHibernateRepository detailHibernateRepository = DetailHibernateRepository.getInstance();
-
-        final Detail detail = new Detail();
-        detail.setBeginningTime(LocalDateTime.now());
-        TimeUnit.SECONDS.sleep(3);
-        detail.setEndingTime(LocalDateTime.now());
-        detail.setSpentTime(3);
-        detail.setSpentFuel(560);
-        detail.setMinedFuel(1450);
-        detail.setAmountOfBrokenChips(8);
-
-        detailHibernateRepository.save(detail);
+        ENTITY_MANAGER.getTransaction().begin();
+        ENTITY_MANAGER.createNativeQuery("delete from details;")
+                .executeUpdate();
+        ENTITY_MANAGER.getTransaction().commit();
     }
 }
