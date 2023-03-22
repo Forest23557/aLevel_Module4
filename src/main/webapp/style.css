@@ -1,0 +1,88 @@
+/*Zeroing*/
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+/*--------------------*/
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+/* ------------------ */
+
+body {
+	font-size: 16px;
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	background-color: hsl(197, 96%, 38%);
+	color: hsl(197, 33%, 41%);
+
+	display: flex;
+	align-items: center;
+	place-content: center;
+}
+
+nav.navigation {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	place-content: center;
+
+	width: 640px;
+	height: 420px;
+	background-color: hsl(187, 30%, 79%);
+	border-radius: 10px;
+}
+
+h1.header {
+	color: hsl(197, 96%, 38%);
+	font-size: 1.75rem;
+	font-weight: 700;
+	margin: 0 0 0.75rem 0;
+}
+
+li {
+	margin: 0 0 0.25rem 0;
+}
+
+a {
+	position: relative;
+	transition: color ease-in 0.2s;
+	color: hsl(197, 33%, 41%);
+}
+
+a:visited {
+	color: hsl(191, 96%, 38%);
+}
+
+a:hover {
+	color: hsl(197, 96%, 38%);
+}
+
+a:active {
+	color: hsl(197, 96%, 38%);
+}
+
+a::after {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 2px;
+	left: 0;
+	border-bottom: 1px solid hsl(197, 96%, 38%);
+	width: 0;
+	transition: width 0.3s ease-in;
+}
+
+a:hover::after {
+	width: 100%;
+}

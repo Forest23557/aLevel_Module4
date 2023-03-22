@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -59,7 +58,7 @@ public class DetailService {
         Objects.requireNonNull(id);
 
         return detailRepository.getById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Don't have any details with id " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Don't have any details with id: " + id));
     }
 
     public void delete(final String id) {
@@ -104,6 +103,7 @@ public class DetailService {
         LOGGER.info("Phase {} has been ended", phase);
 
         isDetailDone.set(true);
+        fixedThreadPool.awaitTermination(3, TimeUnit.SECONDS);
         timeManager.setCurrentEndingTime();
 
         phaser.arriveAndDeregister();
