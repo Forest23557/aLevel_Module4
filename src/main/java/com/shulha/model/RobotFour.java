@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Random;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class RobotFour implements Runnable {
     private static final Logger LOGGER = LoggerFactory.getLogger(RobotFour.class);
-    private final ThreadLocalRandom random = ThreadLocalRandom.current();
+    private final Random random = new Random();
     private final Phaser phaser;
     private final AtomicLong brokenChips;
     private final AtomicLong percentage;
@@ -30,7 +31,7 @@ public class RobotFour implements Runnable {
         LOGGER.info("It started programming chip");
 
         while (percentage.get() < 100) {
-            final long currentPercentage = random.nextInt(25, 36);
+            final long currentPercentage = random.nextInt(26) + 10;
             final int chanceToBrokeChip = random.nextInt(101);
 
             if (chanceToBrokeChip <= 30) {

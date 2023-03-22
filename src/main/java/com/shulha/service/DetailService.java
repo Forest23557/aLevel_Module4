@@ -74,7 +74,7 @@ public class DetailService {
     public Detail create() {
         final AtomicLong brokenChips = new AtomicLong(0);
         final TimeManager timeManager = new TimeManager();
-        final AtomicBoolean isDetailDone = new AtomicBoolean(false);
+        final AtomicBoolean isDetailMade = new AtomicBoolean(false);
         final ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
         final FuelDepartment fuelDepartment = new FuelDepartment();
         final Phaser phaser = new Phaser(1);
@@ -82,7 +82,7 @@ public class DetailService {
 
         timeManager.setCurrentBeginningTime();
         LOGGER.info("Factory is starting to mine fuel");
-        mineFuel(fuelDepartment, isDetailDone, fixedThreadPool);
+        mineFuel(fuelDepartment, isDetailMade, fixedThreadPool);
 
         LOGGER.info("Factory is starting to pick up a base construction");
         pickUpBaseConstruction(fixedThreadPool, phaser);
@@ -102,7 +102,7 @@ public class DetailService {
         phaser.arriveAndAwaitAdvance();
         LOGGER.info("Phase {} has been ended", phase);
 
-        isDetailDone.set(true);
+        isDetailMade.set(true);
         fixedThreadPool.awaitTermination(3, TimeUnit.SECONDS);
         timeManager.setCurrentEndingTime();
 

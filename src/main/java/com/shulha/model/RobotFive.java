@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Random;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class RobotFive implements Runnable {
     private static final Logger LOGGER = LoggerFactory.getLogger(RobotFive.class);
-    private final ThreadLocalRandom random = ThreadLocalRandom.current();
+    private final Random random = new Random();
     private final Phaser phaser;
     private final AtomicLong percentage;
     private final FuelDepartment fuelDepartment;
@@ -30,7 +31,7 @@ public class RobotFive implements Runnable {
         LOGGER.info("It started forming a detail");
 
         while (percentage.get() < 100) {
-            final long amountOfFuel = random.nextInt(350, 701);
+            final long amountOfFuel = random.nextInt(351) + 350;
             fuelDepartment.addSpentFuel(amountOfFuel);
 
             percentage.getAndAdd(10);

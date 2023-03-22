@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Random;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadLocalRandom;
@@ -14,7 +15,7 @@ public class RobotTwoOrThree implements Runnable {
     private static final Logger LOGGER = LoggerFactory.getLogger(RobotTwoOrThree.class);
     private final Phaser phaser;
     private final AtomicLong percentage;
-    private final ThreadLocalRandom random = ThreadLocalRandom.current();
+    private final Random random = new Random();
 
     public RobotTwoOrThree(final AtomicLong percentage, final Phaser phaser) {
         this.percentage = percentage;
@@ -29,7 +30,7 @@ public class RobotTwoOrThree implements Runnable {
         LOGGER.info("It started working");
 
         while (percentage.get() < 100) {
-            final long currentPercentage = random.nextInt(10, 21);
+            final long currentPercentage = random.nextInt(11) + 10;
             percentage.getAndAdd(currentPercentage);
             LOGGER.info("It has done work by {}%", percentage.get());
 
