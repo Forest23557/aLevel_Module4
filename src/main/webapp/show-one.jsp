@@ -4,8 +4,10 @@
 <%@ page import="com.shulha.model.*" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.util.stream.Collectors" %>
-<%@ page import="java.io.IOException" %>
-<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.io.*" %>
+<%@ page import="javax.servlet.*" %>
+<%@ page import="javax.servlet.http.*" %>
+<%@ page import="java.util.*" %>
 
 <html>
 
@@ -17,7 +19,7 @@
 
 <body>
     <section>
-        <% String collect = request.getReader().lines().collect(Collectors.joining(System.lineSeparator())); %>
+        <% String collect = request.getQueryString(); %>
         <% String id = collect.split("=")[1]; %>
         <% final DetailService detailService = DetailService.getInstance(); %>
         <% final Detail detail = detailService.getById(id); %>

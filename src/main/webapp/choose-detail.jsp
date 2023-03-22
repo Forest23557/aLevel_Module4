@@ -23,7 +23,7 @@
         <% final List<Detail> detailList = detailService.getAll(); %>
 
         <h1 class="header">Choose ID of your detail:</h1>
-        <form method="post" action="show-one.jsp">
+        <form action="show-one.jsp">
             <select name="detail-option" class="selectpicker">
                 <option value="none" disabled="disabled" selected="selected">Choose ID</option>
                 <% for (Detail detail : detailList) { %>
