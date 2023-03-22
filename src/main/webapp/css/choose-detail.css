@@ -52,3 +52,15 @@ button.get-button:hover {
 button.get-button:active {
 	background-color: hsl(197, 96%, 30%);
 }
+
+section.main {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+
+    width: 640px;
+    height: 420px;
+    background-color: hsl(187, 30%, 79%);
+    border-radius: 10px;
+}
