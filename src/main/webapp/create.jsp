@@ -6,7 +6,6 @@
     <title>Create a detail</title>
     <link rel="stylesheet" href="css/zeroing.css">
     <link rel="stylesheet" href="css/choose-detail.css">
-    <script defer src="script.js"></script>
 </head>
 
 <body>
