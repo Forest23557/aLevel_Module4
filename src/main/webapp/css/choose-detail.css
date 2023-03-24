@@ -55,12 +55,31 @@ button.get-button:active {
 
 section.main {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
-    place-content: center;
+   flex-direction: column;
+   align-items: center;
+   place-content: center;
 
-    width: 640px;
-    height: 420px;
-    background-color: hsl(187, 30%, 79%);
-    border-radius: 10px;
+   width: 640px;
+   height: 420px;
+   background-color: hsl(187, 30%, 79%);
+   border-radius: 10px;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+div.redirect-message {
+	position: absolute;
+	margin: auto;
+	display: flex;
+   flex-direction: column;
+   align-items: center;
+   place-content: center;
+	
+   width: 640px;
+   height: 420px;
+   background-color: hsl(187, 30%, 79%);
+   border-radius: 10px;
+	padding: 1.5rem;
 }

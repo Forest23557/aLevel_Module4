@@ -2,12 +2,18 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 	const createButton = document.querySelector("button"),
-		section = document.querySelector("section");
+			section = document.querySelector("section"),
+			container = document.createElement("div");
+
+	container.classList.add("redirect-message");
 
 	createButton.addEventListener("click", () => {
-		section.innerHTML = `
-   		<div>Wait until a detail is created.</div>
-   		<div>You will redirect to a page with information about the detail.</div>
-   	`;
+		container.innerHTML = `
+			<div>Wait until a detail is created.</div>
+			<div>You will redirect to a page with information about the detail.</div>
+		`;
+
+		document.body.insertBefore(container, section);
+		section.classList.add("hidden");
 	});
 });
