@@ -83,3 +83,19 @@ div.redirect-message {
    border-radius: 10px;
 	padding: 1.5rem;
 }
+
+div.spinner {
+	width: 3rem;
+   height: 3rem;
+	margin-bottom: 1rem;
+	border-radius: 50%;
+	border: 5px solid hsl(187, 21%, 66%);
+	border-right-color: hsl(197, 96%, 38%);
+	animation: rotateSpinner 800ms linear infinite;
+}
+
+@keyframes rotateSpinner {
+	to {
+		transform: rotate(360deg);
+	}
+}

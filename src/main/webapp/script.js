@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	createButton.addEventListener("click", () => {
 		container.innerHTML = `
+			<div class="spinner"></div>
 			<div>Wait until a detail is created.</div>
-			<div>You will redirect to a page with information about the detail.</div>
+			<div>You will be redirected to a page with information about the detail.</div>
 		`;
 
 		document.body.insertBefore(container, section);
