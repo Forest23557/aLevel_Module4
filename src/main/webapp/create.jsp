@@ -11,9 +11,7 @@
 
 <body>
     <section class="main">
-        <form method="post" action="show-created.jsp">
-            <button class="get-button" type="submit">Create</button>
-        </form>
+        <button class="get-button" type="submit"><a href="show-created.jsp">Create</a></button>
 
         <p><a id="back-to-main" href="/..">Back to the main page</a></p>
     </section>
