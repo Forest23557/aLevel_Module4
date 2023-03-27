@@ -1,4 +1,4 @@
-package com.shulha.model;
+package com.shulha.util;
 
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 import java.util.concurrent.Phaser;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
