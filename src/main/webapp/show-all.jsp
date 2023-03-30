@@ -42,7 +42,7 @@
             <% } %>
         </table>
 
-        <p><a id="back-to-main" href="/..">Back to the main page</a></p>
+        <p><a id="back-to-main" href="/module-4">Back to the main page</a></p>
     </section>
 </body>
 

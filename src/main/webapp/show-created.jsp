@@ -39,7 +39,7 @@
             </tr>
         </table>
 
-        <p><a id="back-to-main" href="/create.jsp">Back to the creating some detail</a></p>
+        <p><a id="back-to-main" href="create.jsp">Back to the creating some detail</a></p>
     </section>
 </body>
 

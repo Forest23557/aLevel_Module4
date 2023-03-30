@@ -46,7 +46,7 @@
             </tr>
         </table>
 
-        <p><a id="back-to-main" href="/choose-detail.jsp">Back to the choosing some detail</a></p>
+        <p><a id="back-to-main" href="choose-detail.jsp">Back to the choosing some detail</a></p>
     </section>
 </body>
 
